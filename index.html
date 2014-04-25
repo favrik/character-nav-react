@@ -20,26 +20,45 @@
     var SomeApp = React.createClass({
       getInitialState: function () {
         return {
-          initialCharacter: 'A'
+          currentCharacter: 'A'
         };
       },
 
       handleCharacterSelection: function (character) {
-        this.setState({ initialCharacter: character });
+        this.setState({ currentCharacter: character });
+      },
+
+      getItems: function () {
+        var result = [];
+        for (var i = 0; i < this.props.data.length; i++) {
+          if (this.props.data[i].charAt(0) == this.state.currentCharacter) {
+            result.push(this.props.data[i]);
+          }
+        }
+        return result;
       },
 
       render: function () {
+        var items = this.getItems().join(' ');
+        if (items == '') {
+          items = 'No results';
+        }
         return (
           <div className="wrapper">
             <CharacterNav
-              handler={this.handleCharacterSelection}
-              selected={this.state.initialCharacter} />
+              select={this.handleCharacterSelection}
+              selected={this.state.currentCharacter}
+            />
+            <div className="content">
+              {items}
+            </div>
           </div>
         );
       }
     });
 
-    React.renderComponent(<SomeApp />, document.getElementById('yoyomax'));
+    var data = ['ZOMG', 'WTF', 'PWND', 'Yes', 'Amphibious', 'Astroboy', '! Kerrang'];
+    React.renderComponent(<SomeApp data={data} />, document.getElementById('yoyomax'));
     </script>
   </body>
 </html>

@@ -7,7 +7,8 @@ var CharacterNav = React.createClass({
     };
   },
 
-  select: function (character) {
+  handleClick: function (character) {
+    this.props.select(character);
   },
 
   render: function () {
@@ -17,17 +18,22 @@ var CharacterNav = React.createClass({
       .sort();
 
     var items = characters.map(function (item, index) {
-      return <CharacterNavItem character={item} />;
-    });
+      return <CharacterNavItem character={item} clicked={this.handleClick} />;
+    }, this);
+
 
     return <ul className="character-nav">{items}</ul>;
   }
 });
 
 var CharacterNavItem = React.createClass({
+  handleClick: function () {
+    this.props.clicked(this.props.character);
+  },
+
   render: function () {
     return (
-      <li><a href={ this.props.character }>{ this.props.character }</a></li>
+      <li><a onClick={this.handleClick} href="#">{ this.props.character }</a></li>
     );
   }
 });
