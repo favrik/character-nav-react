@@ -11,6 +11,7 @@ var CharacterNav = React.createClass({
 
   handleClick: function (character) {
     this.props.select(character);
+    return false;
   },
 
   render: function () {
