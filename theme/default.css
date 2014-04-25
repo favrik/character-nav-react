@@ -18,13 +18,14 @@ body {
 
 .character-nav li {
   display: inline-block;
-  width: 2%;
+  width: 3%;
   list-style: none;
   border: 1px solid #eee;
 }
 
 .character-nav a {
   width: 100%;
+  font-size: 25px;
   display: block;
   text-decoration: none;
   color: blue;
