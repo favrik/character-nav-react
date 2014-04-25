@@ -1,0 +1,35 @@
+body {
+  padding-top: 50px;
+}
+.character-nav {
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+
+.content {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  padding: 50px;
+  font-size: 50px;
+}
+
+.character-nav li {
+  display: inline-block;
+  width: 2%;
+  list-style: none;
+  border: 1px solid #eee;
+}
+
+.character-nav a {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  color: blue;
+}
+
+.character-nav .character-nav-selected {
+  color: red;
+}

@@ -18,7 +18,8 @@ var CharacterNav = React.createClass({
       .sort();
 
     var items = characters.map(function (item, index) {
-      return <CharacterNavItem character={item} clicked={this.handleClick} />;
+      var selected = this.props.selected == item ? true : false;
+      return <CharacterNavItem selected={selected} character={item} clicked={this.handleClick} />;
     }, this);
 
 
@@ -27,13 +28,16 @@ var CharacterNav = React.createClass({
 });
 
 var CharacterNavItem = React.createClass({
-  handleClick: function () {
+  handleClick: function (e) {
+    e.preventDefault();
     this.props.clicked(this.props.character);
   },
 
   render: function () {
+    var css = 'character-nav-item';
+    css += this.props.selected ? ' character-nav-selected' : '';
     return (
-      <li><a onClick={this.handleClick} href="#">{ this.props.character }</a></li>
+      <li><a className={css} onClick={this.handleClick} href="#">{ this.props.character }</a></li>
     );
   }
 });
