@@ -1,0 +1,21 @@
+{
+  "name": "character-nav-react",
+  "version": "0.0.0",
+  "authors": [
+    "Favio Manriquez Leon <favio@favrik.com>"
+  ],
+  "description": "A character based navigation component for React",
+  "main": "character_nav.jsx",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.14.0",
+    "react": "~0.10.0"
+  }
+}
