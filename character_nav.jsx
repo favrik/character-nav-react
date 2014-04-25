@@ -3,7 +3,9 @@
 var CharacterNav = React.createClass({
   getDefaultProps: function () {
     return {
-      extra: []
+      extra: [],
+      selectedClass: 'character-nav-selected',
+      itemClass: 'character-nav-item'
     };
   },
 
@@ -18,27 +20,11 @@ var CharacterNav = React.createClass({
       .sort();
 
     var items = characters.map(function (item, index) {
-      var selected = this.props.selected == item ? true : false;
-      return <CharacterNavItem selected={selected} character={item} clicked={this.handleClick} />;
+      return <li><a className={this.props.current == item ? ' ' + this.props.selectedClass : ''} href="#"
+                    onClick={this.handleClick.bind(this, item)}>{item}</a>
+             </li>;
     }, this);
-
 
     return <ul className="character-nav">{items}</ul>;
   }
 });
-
-var CharacterNavItem = React.createClass({
-  handleClick: function (e) {
-    e.preventDefault();
-    this.props.clicked(this.props.character);
-  },
-
-  render: function () {
-    var css = 'character-nav-item';
-    css += this.props.selected ? ' character-nav-selected' : '';
-    return (
-      <li><a className={css} onClick={this.handleClick} href="#">{ this.props.character }</a></li>
-    );
-  }
-});
-
