@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+    <title></title>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id='qunit-fixture'>
+    </div>
+    <div id="yoyomax"></div>
+    <script src='bower_components/react/react.min.js'></script>
+    <script src='bower_components/react/JSXTransformer.js'></script>
+    <script type="text/jsx" src='character_nav.jsx'></script>
+    <script type="text/jsx">
+      /**
+       * @jsx React.DOM
+       */
+    var SomeApp = React.createClass({
+      getInitialState: function () {
+        return {
+          initialCharacter: 'A'
+        };
+      },
+
+      handleCharacterSelection: function (character) {
+        this.setState({ initialCharacter: character });
+      },
+
+      render: function () {
+        return (
+          <div className="wrapper">
+            <CharacterNav
+              handler={this.handleCharacterSelection}
+              selected={this.state.initialCharacter} />
+          </div>
+        );
+      }
+    });
+
+    React.renderComponent(<SomeApp />, document.getElementById('yoyomax'));
+    </script>
+  </body>
+</html>
